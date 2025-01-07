@@ -8,7 +8,7 @@ User script that hides YouTube Shorts from the home page and sidebar on both des
 
    - [Tampermonkey](https://www.tampermonkey.net) (Chrome, Firefox, Edge, etc.)
    - [Violentmonkey](https://violentmonkey.github.io) (Chrome, Firefox, Edge, etc.)
-   - [UserScripts](https://github.com/quoid/userscripts) (Safari on macOS and iOS)
+   - [Userscripts](https://github.com/quoid/userscripts) (Safari on macOS and iOS)
 
 2. Install the script
 
@@ -24,8 +24,8 @@ User script that hides YouTube Shorts from the home page and sidebar on both des
 
 ## Usage
 
-1. Go to YouTube (desktop or mobile)
-2. Shorts sections and links should now be hidden
+1. Go on YouTube
+2. YouTube Shorts should now be hidden
 
 ## Contribute
 
