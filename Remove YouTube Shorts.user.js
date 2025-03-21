@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove YouTube Shorts
 // @namespace    https://github.com/chippokiddo/removeyoutubeshorts
-// @version      1.1.3
+// @version      1.1.4
 // @description  Hides and removes YouTube Shorts
 // @author       chip
 // @license      MIT
@@ -34,14 +34,20 @@
         document.head.appendChild(style);
     }
 
+    const isShort = (el) => {
+        const link = el.querySelector('a[href*="/shorts/"]');
+        const thumb = el.querySelector('img[src*="shorts"]');
+        const title = el.querySelector('#video-title');
+        const hrefCheck = el.innerHTML.includes('/shorts/');
+        return !!(link || thumb || hrefCheck || (title && title.textContent.toLowerCase().includes('shorts')));
+    };
+
     const removeShorts = () => {
         document.querySelectorAll(SHORTS_SELECTORS).forEach(el => el.remove());
 
-        document.querySelectorAll('ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer').forEach(el => {
-            const link = el.querySelector('a[href*="/shorts/"]');
-            const thumb = el.querySelector('img[src*="shorts"]');
-            const title = el.querySelector('#video-title');
-            if (link || thumb || (title && title.textContent.toLowerCase().includes('shorts'))) {
+        const candidates = document.querySelectorAll('ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer');
+        candidates.forEach(el => {
+            if (isShort(el)) {
                 el.remove();
             }
         });
@@ -50,6 +56,16 @@
     const observer = new MutationObserver(removeShorts);
     observer.observe(document.body, {childList: true, subtree: true});
 
-    // Run once on load
     removeShorts();
+
+    let lastCheck = Date.now();
+    const loop = () => {
+        const now = Date.now();
+        if (now - lastCheck > 1500) {
+            removeShorts();
+            lastCheck = now;
+        }
+        requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
 })();
