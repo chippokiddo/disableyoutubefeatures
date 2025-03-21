@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Remove YouTube Shorts
 // @namespace    https://github.com/chippokiddo/removeyoutubeshorts
-// @version      1.1.2
-// @description  Hides and removes YouTube Shorts from home page, sidebar, mobile, and search results
+// @version      1.1.3
+// @description  Hides and removes YouTube Shorts
 // @author       chip
 // @license      MIT
 // @match        *://www.youtube.com/*
@@ -35,13 +35,13 @@
     }
 
     const removeShorts = () => {
-        // Remove all predefined Shorts UI elements
         document.querySelectorAll(SHORTS_SELECTORS).forEach(el => el.remove());
 
-        // Remove Shorts from search results
-        document.querySelectorAll('ytd-video-renderer, ytd-grid-video-renderer').forEach(el => {
-            const shortLink = el.querySelector('a[href*="/shorts/"]');
-            if (shortLink) {
+        document.querySelectorAll('ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer').forEach(el => {
+            const link = el.querySelector('a[href*="/shorts/"]');
+            const thumb = el.querySelector('img[src*="shorts"]');
+            const title = el.querySelector('#video-title');
+            if (link || thumb || (title && title.textContent.toLowerCase().includes('shorts'))) {
                 el.remove();
             }
         });
