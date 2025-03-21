@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Remove YouTube Shorts
 // @namespace    https://github.com/chippokiddo/removeyoutubeshorts
-// @version      1.0.0
-// @description  Hides YouTube Shorts from the home page and sidebar on desktop and the home page on mobile
+// @version      1.1.0
+// @description  Hides and removes YouTube Shorts from home page, sidebar, mobile, and search results
 // @author       chip
 // @license      MIT
 // @match        *://www.youtube.com/*
@@ -15,35 +15,40 @@
 (function () {
     'use strict';
 
-    const style = document.createElement('style');
-    style.textContent = `
+    const SHORTS_SELECTORS = `
         ytd-rich-section-renderer,
         ytd-reel-shelf-renderer,
         ytd-reel-item-renderer,
         a[title="Shorts"],
+        a[href="/shorts"],
         ytd-grid-video-renderer[overlay-style="SHORTS"],
         ytm-rich-section-renderer,
         ytm-reel-shelf-renderer,
-        ytm-reel-item-renderer,
-        a[href="/shorts"] {
-            display: none !important;
-        }
+        ytm-reel-item-renderer
     `;
-    document.head.appendChild(style);
 
-    const observer = new MutationObserver(() => {
-        document.querySelectorAll(`
-            ytd-rich-section-renderer,
-            ytd-reel-shelf-renderer,
-            ytd-reel-item-renderer,
-            a[title="Shorts"],
-            ytd-grid-video-renderer[overlay-style="SHORTS"],
-            ytm-rich-section-renderer,
-            ytm-reel-shelf-renderer,
-            ytm-reel-item-renderer,
-            a[href="/shorts"]
-        `).forEach(el => el.remove());
-    });
+    const style = document.createElement('style');
+    style.textContent = `${SHORTS_SELECTORS} { display: none !important; }`;
+    if (document.head) {
+        document.head.appendChild(style);
+    }
 
+    const removeShorts = () => {
+        // Remove known Shorts elements
+        document.querySelectorAll(SHORTS_SELECTORS).forEach(el => el.remove());
+
+        // Extra: Remove Shorts from search results
+        document.querySelectorAll('ytd-video-renderer, ytd-grid-video-renderer').forEach(el => {
+            const link = el.querySelector('a#thumbnail');
+            if (link && link.href.includes('/shorts/')) {
+                el.remove();
+            }
+        });
+    };
+
+    const observer = new MutationObserver(removeShorts);
     observer.observe(document.body, { childList: true, subtree: true });
+
+    // Run once on load
+    removeShorts();
 })();
