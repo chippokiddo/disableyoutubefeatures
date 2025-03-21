@@ -4,3 +4,6 @@
 # Ignore symbolic links
 github-visible
 gitignore-visible
+
+# Ignore IDE project settings
+.idea

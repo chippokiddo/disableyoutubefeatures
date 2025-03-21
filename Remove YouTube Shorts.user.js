@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove YouTube Shorts
 // @namespace    https://github.com/chippokiddo/removeyoutubeshorts
-// @version      1.1.1
+// @version      1.1.2
 // @description  Hides and removes YouTube Shorts from home page, sidebar, mobile, and search results
 // @author       chip
 // @license      MIT
@@ -21,6 +21,7 @@
         ytd-reel-item-renderer,
         a[title="Shorts"],
         a[href="/shorts"],
+        a[aria-label="Shorts"],
         ytd-grid-video-renderer[overlay-style="SHORTS"],
         ytm-rich-section-renderer,
         ytm-reel-shelf-renderer,
@@ -36,7 +37,7 @@
     const removeShorts = () => {
         // Remove all predefined Shorts UI elements
         document.querySelectorAll(SHORTS_SELECTORS).forEach(el => el.remove());
-    
+
         // Remove Shorts from search results
         document.querySelectorAll('ytd-video-renderer, ytd-grid-video-renderer').forEach(el => {
             const shortLink = el.querySelector('a[href*="/shorts/"]');
@@ -47,7 +48,7 @@
     };
 
     const observer = new MutationObserver(removeShorts);
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, {childList: true, subtree: true});
 
     // Run once on load
     removeShorts();
