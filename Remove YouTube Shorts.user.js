@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove YouTube Shorts
 // @namespace    https://github.com/chippokiddo/removeyoutubeshorts
-// @version      1.2.0
+// @version      1.1.1
 // @description  Hides and removes YouTube Shorts from home page, sidebar, mobile, and search results
 // @author       chip
 // @license      MIT
