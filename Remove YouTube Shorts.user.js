@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove YouTube Shorts
 // @namespace    https://github.com/chippokiddo/removeyoutubeshorts
-// @version      1.1.4
+// @version      1.1.5
 // @description  Hides and removes YouTube Shorts
 // @author       chip
 // @license      MIT
@@ -29,7 +29,10 @@
     `;
 
     const style = document.createElement('style');
-    style.textContent = `${SHORTS_SELECTORS} { display: none !important; }`;
+    style.textContent = `${SHORTS_SELECTORS} { display: none !important; }
+        a[href="/shorts"] { display: none !important; }
+        a[href="/shorts"]:has(svg),
+        a[href="/shorts"] svg { display: none !important; }`;
     if (document.head) {
         document.head.appendChild(style);
     }
@@ -51,6 +54,9 @@
                 el.remove();
             }
         });
+
+        const shortsTab = document.querySelectorAll('a[href="/shorts"]');
+        shortsTab.forEach(el => el.remove());
     };
 
     const observer = new MutationObserver(removeShorts);
