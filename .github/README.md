@@ -1,6 +1,6 @@
 # Remove YouTube Shorts
 
-User script that hides YouTube Shorts on desktop and on mobile.
+User script that hides and removes YouTube Shorts on desktop and on mobile.
 
 ## Install
 
