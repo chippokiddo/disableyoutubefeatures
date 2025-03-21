@@ -1,6 +1,6 @@
 # Remove YouTube Shorts
 
-User script that hides YouTube Shorts from the home page and sidebar on desktop and the home page on mobile.
+User script that hides YouTube Shorts on desktop and on mobile.
 
 ## Install
 
