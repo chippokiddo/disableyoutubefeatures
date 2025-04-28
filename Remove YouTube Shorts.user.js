@@ -8,8 +8,8 @@
 // @match        *://www.youtube.com/*
 // @match        *://m.youtube.com/*
 // @grant        none
-// @updateURL    https://raw.githubusercontent.com/chippokiddo/removeyoutubeshorts/main/Remove%20YouTube%20Shorts.user.js
-// @downloadURL  https://raw.githubusercontent.com/chippokiddo/removeyoutubeshorts/main/Remove%20YouTube%20Shorts.user.js
+// @updateURL    https://raw.githubusercontent.com/chippokiddo/disableyoutubefeatures/main/Remove%20YouTube%20Shorts.user.js
+// @downloadURL  https://raw.githubusercontent.com/chippokiddo/disableyoutubefeatures/main/Remove%20YouTube%20Shorts.user.js
 // ==/UserScript==
 
 (function () {

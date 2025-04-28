@@ -20,8 +20,8 @@ body:
       required: true
   - type: input
     attributes:
-      label: Remove YouTube Shorts Version
-      placeholder: e.g., 1.0.0, 1.1.0
+      label: Disable YouTube Feature and Version
+      placeholder: e.g., Remove YouTube Shorts 1.0.0
     validations:
       required: true
   - type: input

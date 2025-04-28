@@ -1,6 +1,11 @@
-# Remove YouTube Shorts
+# Disable YouTube Features
 
-User script that hides and removes YouTube Shorts on desktop and on mobile.
+User script that:
+
+- hides and removes YouTube Shorts
+- disables Ambient Mode
+
+on desktop and on mobile.
 
 ## Install
 
@@ -14,8 +19,9 @@ User script that hides and removes YouTube Shorts on desktop and on mobile.
 
    - Quick Install (Recommended)
 
-     - [Remove YouTube Shorts](https://raw.githubusercontent.com/chippokiddo/removeyoutubeshorts/main/Remove%20YouTube%20Shorts.user.js)
-
+     - [Remove YouTube Shorts](https://raw.githubusercontent.com/chippokiddo/disableyoutubefeatures/main/Remove%20YouTube%20Shorts.user.js)
+     - [Disable YouTube Ambience](https://raw.githubusercontent.com/chippokiddo/disableyoutubefeatures/main/Disable%20YouTube%20Ambience.user.js)
+   
    - Manual Install (Alternative)
      - Open the user script manager dashboard
      - Click 'create a new script' or 'import a script'
@@ -25,7 +31,7 @@ User script that hides and removes YouTube Shorts on desktop and on mobile.
 ## Usage
 
 1. Go on YouTube
-2. YouTube Shorts should now be hidden
+2. YouTube Shorts should now be hidden and/or Ambient Mode should be disabled
 
 ## Contribute
 
