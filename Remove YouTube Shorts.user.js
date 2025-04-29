@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Remove YouTube Shorts
-// @namespace    https://github.com/chippokiddo/removeyoutubeshorts
+// @namespace    https://github.com/chippokiddo/disableyoutubefeatures
 // @version      1.2.0
 // @description  Hides and removes YouTube Shorts
 // @author       chip
